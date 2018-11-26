@@ -1,5 +1,3 @@
-package com.dagonco.herald.feature.task.model
-
 /*
  * Copyright (C) 2018 Dagonco.
  *
@@ -15,6 +13,8 @@ package com.dagonco.herald.feature.task.model
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
+package com.dagonco.herald.feature.task.model
 
 enum class Priority {
     LOW,

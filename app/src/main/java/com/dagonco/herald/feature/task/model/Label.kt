@@ -1,7 +1,3 @@
-package com.dagonco.herald.feature.task.model
-
-import androidx.annotation.ColorRes
-
 /*
  * Copyright (C) 2018 Dagonco.
  *
@@ -17,6 +13,10 @@ import androidx.annotation.ColorRes
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
+package com.dagonco.herald.feature.task.model
+
+import androidx.annotation.ColorRes
 
 data class Label(
     val title: String,
