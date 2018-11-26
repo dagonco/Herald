@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Herald</string>
+
+    <string name="menu_action_add_task">Añadir tarea</string>
+
+    <string name="task_status_1">Por hacer</string>
+    <string name="task_status_2">En proceso</string>
+    <string name="task_status_3">Hecho</string>
+
+    <string name="task_priority_1">Baja</string>
+    <string name="task_priority_2">Media</string>
+    <string name="task_priority_3">Alta</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
