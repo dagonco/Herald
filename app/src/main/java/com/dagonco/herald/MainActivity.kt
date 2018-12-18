@@ -16,13 +16,12 @@
 
 package com.dagonco.herald
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.dagonco.herald.feature.dialog.AddTaskActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,16 +36,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.action_refresh -> showAddTaskDialog()
+        return when (item?.itemId) {
+            R.id.action_refresh -> run { showAddTaskScreen(); return true }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
-    private fun showAddTaskDialog() {
-        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
-        val dialogView =
-            LayoutInflater.from(this).inflate(R.layout.fragment_add_task_dialog, viewGroup, false)
-        AlertDialog.Builder(this).setView(dialogView).create().show()
+    private fun showAddTaskScreen() {
+        startActivity(Intent(this, AddTaskActivity::class.java))
     }
 }
