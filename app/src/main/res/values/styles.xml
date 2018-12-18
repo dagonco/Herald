@@ -4,24 +4,25 @@
 
     <style name="Button" parent="Widget.MaterialComponents.Button.OutlinedButton" />
 
-    <style name="Button.Task" />
+    <style name="Button.Task">
+        <item name="strokeColor">@android:color/black</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 
     <style name="Button.Task.Priority_1">
         <item name="android:text">@string/task_priority_1</item>
-        <item name="android:textColor">@color/task_priority_1</item>
-        <item name="strokeColor">@color/task_priority_1</item>
     </style>
 
     <style name="Button.Task.Priority_2">
         <item name="android:text">@string/task_priority_2</item>
-        <item name="android:textColor">@color/task_priority_2</item>
-        <item name="strokeColor">@color/task_priority_2</item>
     </style>
 
     <style name="Button.Task.Priority_3">
         <item name="android:text">@string/task_priority_3</item>
-        <item name="android:textColor">@color/task_priority_3</item>
-        <item name="strokeColor">@color/task_priority_3</item>
+    </style>
+
+    <style name="Button.Task.Save">
+        <item name="android:text">@string/task_save</item>
     </style>
 
 </resources>
