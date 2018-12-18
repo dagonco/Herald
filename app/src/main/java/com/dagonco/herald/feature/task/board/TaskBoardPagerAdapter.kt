@@ -33,7 +33,7 @@ class TaskBoardPagerAdapter(fragmentManager: FragmentManager) :
             0 -> TaskListFragment.Board.TO_DO
             1 -> TaskListFragment.Board.IN_PROGRESS
             2 -> TaskListFragment.Board.DONE
-            else -> TaskListFragment.Board.UNKNOWN
+            else -> TaskListFragment.Board.DONE
         }
 
         val fragment = TaskListFragment()

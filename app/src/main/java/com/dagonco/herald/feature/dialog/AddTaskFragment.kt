@@ -17,6 +17,7 @@
 package com.dagonco.herald.feature.dialog
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -36,6 +37,9 @@ import java.util.*
 
 class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
+    private var onTaskStoredListener: OnTaskStoredListener? = null
+
+
     private var prioritySelected: Priority = LOW
     private var dateSelected = Calendar.getInstance()
 
@@ -54,6 +58,13 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         initButtonsListeners()
     }
 
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if (context is OnTaskStoredListener) {
+            onTaskStoredListener = context
+        }
+    }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         dateSelected.run {
             set(Calendar.YEAR, year)
@@ -63,7 +74,7 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun initButtonsListeners() {
-        datePickerButton.setOnClickListener { showDatePicker() }
+        changeStatusButton.setOnClickListener { showDatePicker() }
         lowPriorityButton.setOnClickListener { onPriorityClicked(LOW) }
         mediumPriorityButton.setOnClickListener { onPriorityClicked(MEDIUM) }
         highPriorityButton.setOnClickListener { onPriorityClicked(HIGH) }
@@ -94,6 +105,7 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private fun storeTask() {
         val title = taskNameEditText.text?.toString() ?: ""
         Repository.storeTask(Task(title, dateSelected.timeInMillis, prioritySelected))
+        onTaskStoredListener?.onTaskStored()
     }
 
 
@@ -105,5 +117,9 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private fun MaterialButton.markPriorityStyleButton() = run {
         strokeColor = ColorStateList.valueOf(Color.MAGENTA)
         setTextColor(Color.MAGENTA)
+    }
+
+    interface OnTaskStoredListener {
+        fun onTaskStored()
     }
 }

@@ -16,13 +16,8 @@
 
 package com.dagonco.herald.feature.task.model
 
-import com.squareup.moshi.Json
-
 enum class Status {
-    @Json(name = "to_do")
     TO_DO,
-    @Json(name = "doing")
     IN_PROGRESS,
-    @Json(name = "done")
     DONE
 }

@@ -20,8 +20,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.dagonco.herald.R
+import com.dagonco.herald.Repository
+import com.dagonco.herald.feature.task.model.Status
+import com.dagonco.herald.feature.task.model.Task
+import kotlinx.android.synthetic.main.fragment_task_list.*
 
 class TaskListFragment : Fragment() {
 
@@ -30,10 +36,11 @@ class TaskListFragment : Fragment() {
     }
 
     enum class Board {
-        TO_DO, IN_PROGRESS, DONE, UNKNOWN
+        TO_DO, IN_PROGRESS, DONE
     }
 
     private lateinit var boardSection: Board
+    private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +52,32 @@ class TaskListFragment : Fragment() {
         return rootView
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
+        taskAdapter = TaskAdapter(getSectionTasks())
+        initializeRecyclerView()
+    }
+
+    private fun getSectionTasks(): List<Task> {
+        val filterStatus = when (boardSection) {
+            Board.TO_DO -> Status.TO_DO
+            Board.IN_PROGRESS -> Status.IN_PROGRESS
+            Board.DONE -> Status.DONE
+        }
+        return Repository.getTasks().filter { it.status == filterStatus }
+    }
+
+    private fun initializeRecyclerView() {
+
+        with(recyclerView) {
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayout.HORIZONTAL
+                )
+            )
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 }

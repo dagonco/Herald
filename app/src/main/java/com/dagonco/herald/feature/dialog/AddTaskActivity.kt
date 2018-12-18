@@ -21,7 +21,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.dagonco.herald.R
 
-class AddTaskActivity : AppCompatActivity() {
+class AddTaskActivity : AppCompatActivity(), AddTaskFragment.OnTaskStoredListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,5 +35,9 @@ class AddTaskActivity : AppCompatActivity() {
             android.R.id.home -> run { finish(); return true }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onTaskStored() {
+        finish()
     }
 }
