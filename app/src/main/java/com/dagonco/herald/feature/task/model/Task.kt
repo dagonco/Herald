@@ -16,12 +16,10 @@
 
 package com.dagonco.herald.feature.task.model
 
-import java.util.*
-
-data class Task(
+class Task(
     val title: String,
-    val date: Calendar,
+    val timeInMillis: Long,
     val priority: Priority,
-    val labelList: List<Label>? = emptyList()
+    val status: Status = Status.TO_DO
 )
 

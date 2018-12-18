@@ -16,10 +16,13 @@
 
 package com.dagonco.herald.feature.task.model
 
-import androidx.annotation.ColorRes
+import com.squareup.moshi.Json
 
-data class Label(
-    val title: String,
-    @ColorRes val color: Int
-)
-
+enum class Status {
+    @Json(name = "to_do")
+    TO_DO,
+    @Json(name = "doing")
+    IN_PROGRESS,
+    @Json(name = "done")
+    DONE
+}
