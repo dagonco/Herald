@@ -20,6 +20,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.dagonco.herald.R
@@ -43,10 +44,13 @@ class TaskBoardFragment : Fragment(), ViewPager.OnPageChangeListener {
 
     private fun initTabLayout() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                viewPager.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            }
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.run { viewPager.currentItem = position }
+                viewPager.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
             }
         })
     }
