@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dagonco.herald.R
+import com.dagonco.herald.feature.task.model.Status.*
 import com.dagonco.herald.feature.task.model.Task
 import kotlinx.android.synthetic.main.item_layout_task.view.*
 import java.text.SimpleDateFormat
@@ -59,6 +60,18 @@ class TaskAdapter(private val dataSet: List<Task>) :
 
             itemView.titleTextView.text = task.title
             itemView.dateTextView.text = format
+
+            val imageResource = when (task.status) {
+                TO_DO, IN_PROGRESS -> R.drawable.ic_check_done
+                DONE -> R.drawable.ic_delete
+            }
+
+            itemView.changeStatusButton.apply {
+                setImageResource(imageResource)
+                setOnClickListener {
+                    // Something
+                }
+            }
         }
     }
 }
