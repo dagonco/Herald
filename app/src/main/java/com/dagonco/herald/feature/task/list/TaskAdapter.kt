@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dagonco.herald.R
+import com.dagonco.herald.feature.task.model.Priority.*
 import com.dagonco.herald.feature.task.model.Status.*
 import com.dagonco.herald.feature.task.model.Task
 import kotlinx.android.synthetic.main.item_layout_task.view.*
@@ -58,18 +59,27 @@ class TaskAdapter(private val dataSet: List<Task>) :
                 .format(value)
                 .replace("/", "de")
 
-            itemView.titleTextView.text = task.title
-            itemView.dateTextView.text = format
+            with(itemView) {
+                titleTextView.text = task.title
+                dateTextView.text = format
 
-            val imageResource = when (task.status) {
-                TO_DO, IN_PROGRESS -> R.drawable.ic_check_done
-                DONE -> R.drawable.ic_delete
-            }
+                val stringResource = when (task.priority) {
+                    LOW -> R.string.task_priority_1
+                    MEDIUM -> R.string.task_priority_2
+                    HIGH -> R.string.task_priority_3
+                }
+                priorityTextView.text = context.getString(stringResource)
 
-            itemView.changeStatusButton.apply {
-                setImageResource(imageResource)
-                setOnClickListener {
-                    // Something
+
+                changeStatusButton.apply {
+                    val imageResource = when (task.status) {
+                        TO_DO, IN_PROGRESS -> R.drawable.ic_check_done
+                        DONE -> R.drawable.ic_delete
+                    }
+                    setImageResource(imageResource)
+                    setOnClickListener {
+                        // Something
+                    }
                 }
             }
         }
