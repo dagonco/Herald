@@ -20,9 +20,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dagonco.herald.R
+import com.dagonco.herald.feature.extension.setAccessibilityDelegate
 import com.dagonco.herald.feature.task.model.Priority.*
 import com.dagonco.herald.feature.task.model.Status.*
 import com.dagonco.herald.feature.task.model.Task
@@ -80,6 +82,15 @@ class TaskAdapter(private val dataSet: List<Task>) :
                     setOnClickListener {
                         // Something
                     }
+
+                    val accessibilityAction = when (task.status) {
+                        TO_DO -> R.string.change_status_in_progress
+                        IN_PROGRESS -> R.string.change_status_done
+                        DONE -> R.string.delete_status_done
+                    }
+                    setAccessibilityDelegate(
+                        ACTION_CLICK to context.getString(accessibilityAction)
+                    )
                 }
             }
         }
