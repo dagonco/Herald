@@ -12,6 +12,7 @@
     <string name="task_priority_3">Alta</string>
 
     <string name="task_save">Guardar</string>
+    <string name="change_status">Cambiar de estado</string>
 
     <string name="task_name_input_layout_hint">Nombre de la tarea</string>
     <string name="task_date_input_layout_hint">Fecha de la tarea:</string>
