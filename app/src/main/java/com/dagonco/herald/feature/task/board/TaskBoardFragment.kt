@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.dagonco.herald.R
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_task_board.*
 
 class TaskBoardFragment : Fragment(), ViewPager.OnPageChangeListener {
@@ -37,6 +38,17 @@ class TaskBoardFragment : Fragment(), ViewPager.OnPageChangeListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewPager()
+        initTabLayout()
+    }
+
+    private fun initTabLayout() {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.run { viewPager.currentItem = position }
+            }
+        })
     }
 
     private fun initViewPager() {
