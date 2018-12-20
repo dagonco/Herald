@@ -27,6 +27,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK
 import android.widget.DatePicker
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.dagonco.herald.R
 import com.dagonco.herald.Repository
@@ -137,8 +138,9 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun MaterialButton.markPriorityStyleButton() = run {
-        strokeColor = ColorStateList.valueOf(Color.MAGENTA)
-        setTextColor(Color.MAGENTA)
+        val magentaAccessible = ContextCompat.getColor(context, R.color.magenta_accessible)
+        strokeColor = ColorStateList.valueOf(magentaAccessible)
+        setTextColor(magentaAccessible)
     }
 
     interface OnTaskStoredListener {
