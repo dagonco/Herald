@@ -99,6 +99,7 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         lowPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
         mediumPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
         highPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
+        saveButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.save_task))
     }
 
     private fun onPriorityClicked(priority: Priority) {
@@ -126,6 +127,7 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         val title = taskNameEditText.text?.toString() ?: ""
         Repository.storeTask(Task(title, dateSelected.timeInMillis, prioritySelected))
         onTaskStoredListener?.onTaskStored()
+        view?.announceForAccessibility(getString(R.string.task_saved))
     }
 
 

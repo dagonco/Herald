@@ -23,6 +23,8 @@
 
     <string name="modify_date">Modificar la fecha</string>
     <string name="modify_task_priority">Modificar la prioridad de la tarea</string>
+    <string name="save_task">Almacenar la tarea</string>
+    <string name="task_saved">Tarea guardada</string>
 
     <string name="task_name_input_layout_hint">Nombre de la tarea</string>
     <string name="task_date_input_layout_hint">Fecha de la tarea:</string>
