@@ -11,6 +11,10 @@
     <string name="task_priority_2">Media</string>
     <string name="task_priority_3">Alta</string>
 
+    <string name="task_priority_1_accessible">Prioridad Baja</string>
+    <string name="task_priority_2_accessible">Prioridad Media</string>
+    <string name="task_priority_3_accessible">Prioridad Alta</string>
+
     <string name="task_save">Guardar</string>
     <string name="change_status">Cambiar de estado</string>
     <string name="change_status_in_progress">Cambiar a en proceso</string>
@@ -18,6 +22,7 @@
     <string name="delete_status_done">Eliminar del listado</string>
 
     <string name="modify_date">Modificar la fecha</string>
+    <string name="modify_task_priority">Modificar la prioridad de la tarea</string>
 
     <string name="task_name_input_layout_hint">Nombre de la tarea</string>
     <string name="task_date_input_layout_hint">Fecha de la tarea:</string>

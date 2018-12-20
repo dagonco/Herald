@@ -11,14 +11,17 @@
 
     <style name="Button.Task.Priority_1">
         <item name="android:text">@string/task_priority_1</item>
+        <item name="android:contentDescription">@string/task_priority_1_accessible</item>
     </style>
 
     <style name="Button.Task.Priority_2">
         <item name="android:text">@string/task_priority_2</item>
+        <item name="android:contentDescription">@string/task_priority_2_accessible</item>
     </style>
 
     <style name="Button.Task.Priority_3">
         <item name="android:text">@string/task_priority_3</item>
+        <item name="android:contentDescription">@string/task_priority_3_accessible</item>
     </style>
 
     <style name="Button.Task.Save">

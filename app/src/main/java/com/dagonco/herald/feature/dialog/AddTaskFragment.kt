@@ -95,6 +95,10 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
             setOnClickListener { changeDateButton.performClick() }
             setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_date))
         }
+
+        lowPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
+        mediumPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
+        highPriorityButton.setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_task_priority))
     }
 
     private fun onPriorityClicked(priority: Priority) {
