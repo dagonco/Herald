@@ -26,6 +26,10 @@
     <string name="save_task">Almacenar la tarea</string>
     <string name="task_saved">Tarea guardada</string>
 
+    <string name="task_moved_to_in_progress">Tarea movida a en proceso</string>
+    <string name="task_moved_to_done">Tarea movida a hecho</string>
+    <string name="task_deleted">Tarea eliminada</string>
+
     <string name="task_name_input_layout_hint">Nombre de la tarea</string>
     <string name="task_date_input_layout_hint">Fecha de la tarea:</string>
 </resources>

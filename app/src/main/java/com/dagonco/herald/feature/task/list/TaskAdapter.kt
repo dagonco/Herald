@@ -77,7 +77,12 @@ class TaskAdapter(private val dataSet: List<Task>) :
                     }
                     setImageResource(imageResource)
                     setOnClickListener {
-                        // Something
+                        val stringAction = when (task.status) {
+                            TO_DO -> R.string.task_moved_to_in_progress
+                            IN_PROGRESS -> R.string.task_moved_to_done
+                            DONE -> R.string.task_deleted
+                        }
+                        it.announceForAccessibility(context.getString(stringAction))
                     }
 
                     val accessibilityAction = when (task.status) {
