@@ -16,6 +16,7 @@
 
 package com.dagonco.herald.feature.dialog
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.res.ColorStateList
@@ -28,6 +29,7 @@ import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import com.dagonco.herald.R
 import com.dagonco.herald.Repository
+import com.dagonco.herald.core.getFormatted
 import com.dagonco.herald.feature.task.model.Priority
 import com.dagonco.herald.feature.task.model.Priority.*
 import com.dagonco.herald.feature.task.model.Task
@@ -65,12 +67,16 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         dateSelected.run {
             set(Calendar.YEAR, year)
             set(Calendar.MONTH, month)
             set(Calendar.DAY_OF_MONTH, dayOfMonth)
         }
+
+        taskDateInputLayout.text =
+                "${getString(R.string.task_date_input_layout_hint)}\n${Date(dateSelected.timeInMillis).getFormatted()}"
     }
 
     private fun initButtonsListeners() {
