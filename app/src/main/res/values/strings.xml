@@ -17,6 +17,8 @@
     <string name="change_status_done">Cambiar a hecho</string>
     <string name="delete_status_done">Eliminar del listado</string>
 
+    <string name="modify_date">Modificar la fecha</string>
+
     <string name="task_name_input_layout_hint">Nombre de la tarea</string>
     <string name="task_date_input_layout_hint">Fecha de la tarea:</string>
 </resources>

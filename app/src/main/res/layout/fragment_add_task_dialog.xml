@@ -36,31 +36,33 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/taskDateInputLayout"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/dateLinearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:importantForAccessibility="yes"
-        android:minHeight="24dp"
-        android:text="@string/task_date_input_layout_hint"
-        app:layout_constraintBottom_toBottomOf="@+id/changeStatusButton"
-        app:layout_constraintEnd_toStartOf="@id/changeStatusButton"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/changeStatusButton" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/changeStatusButton"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/ic_calendar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/taskDateInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameInputLayout" />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/taskNameInputLayout">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/taskDateInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:minHeight="24dp"
+            android:text="@string/task_date_input_layout_hint" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/changeDateButton"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_calendar" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/lowPriorityButton"
@@ -70,7 +72,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toStartOf="@+id/mediumPriorityButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeStatusButton" />
+        app:layout_constraintTop_toBottomOf="@id/dateLinearLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mediumPriorityButton"
@@ -80,7 +82,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toStartOf="@+id/highPriorityButton"
         app:layout_constraintStart_toEndOf="@id/lowPriorityButton"
-        app:layout_constraintTop_toBottomOf="@id/changeStatusButton" />
+        app:layout_constraintTop_toBottomOf="@id/dateLinearLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/highPriorityButton"
@@ -90,7 +92,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/mediumPriorityButton"
-        app:layout_constraintTop_toBottomOf="@id/changeStatusButton" />
+        app:layout_constraintTop_toBottomOf="@id/dateLinearLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveButton"

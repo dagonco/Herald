@@ -25,11 +25,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction.ACTION_CLICK
 import android.widget.DatePicker
 import androidx.fragment.app.Fragment
 import com.dagonco.herald.R
 import com.dagonco.herald.Repository
 import com.dagonco.herald.core.getFormatted
+import com.dagonco.herald.feature.extension.setAccessibilityDelegate
 import com.dagonco.herald.feature.task.model.Priority
 import com.dagonco.herald.feature.task.model.Priority.*
 import com.dagonco.herald.feature.task.model.Task
@@ -58,6 +60,7 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
         lowPriorityButton.markPriorityStyleButton()
         initButtonsListeners()
+        initAccessibility()
     }
 
     override fun onAttach(context: Context?) {
@@ -80,11 +83,18 @@ class AddTaskFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun initButtonsListeners() {
-        changeStatusButton.setOnClickListener { showDatePicker() }
+        changeDateButton.setOnClickListener { showDatePicker() }
         lowPriorityButton.setOnClickListener { onPriorityClicked(LOW) }
         mediumPriorityButton.setOnClickListener { onPriorityClicked(MEDIUM) }
         highPriorityButton.setOnClickListener { onPriorityClicked(HIGH) }
         saveButton.setOnClickListener { storeTask() }
+    }
+
+    private fun initAccessibility() {
+        dateLinearLayout.apply {
+            setOnClickListener { changeDateButton.performClick() }
+            setAccessibilityDelegate(ACTION_CLICK to getString(R.string.modify_date))
+        }
     }
 
     private fun onPriorityClicked(priority: Priority) {
