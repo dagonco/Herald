@@ -23,11 +23,11 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.dagonco.herald.R
+import com.dagonco.herald.core.getFormatted
 import com.dagonco.herald.feature.task.model.Priority.*
 import com.dagonco.herald.feature.task.model.Status.*
 import com.dagonco.herald.feature.task.model.Task
 import kotlinx.android.synthetic.main.item_layout_task.view.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 class TaskAdapter(private val dataSet: List<Task>) :
@@ -54,14 +54,11 @@ class TaskAdapter(private val dataSet: List<Task>) :
 
         @SuppressLint("SimpleDateFormat")
         fun render(task: Task) {
-            val value = Date().apply { time = task.timeInMillis }
-            val format = SimpleDateFormat("EEEE, dd / MMMM / yyyy")
-                .format(value)
-                .replace("/", "de")
+            val date = Date().apply { time = task.timeInMillis }
 
             with(itemView) {
                 titleTextView.text = task.title
-                dateTextView.text = format
+                dateTextView.text = date.getFormatted()
 
                 val stringResource = when (task.priority) {
                     LOW -> R.string.task_priority_1
