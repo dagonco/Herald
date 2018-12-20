@@ -3,4 +3,5 @@
     <color name="task_priority_1">#FFEB3B</color>
     <color name="task_priority_2">#FF9800</color>
     <color name="task_priority_3">#F44336</color>
+    <color name="item_task_label">#686868</color>
 </resources>
