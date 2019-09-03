@@ -1,4 +1,4 @@
-[![MIT License][license-shield]][license-url]
+[![license-shield]][license-url]
 
 # Herald
 
